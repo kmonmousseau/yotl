@@ -1,0 +1,21 @@
+<VirtualHost *>
+  ## Vhost docroot
+  DocumentRoot "/var/www/html/web"
+
+  <Directory "/var/www/html/web">
+    Options Indexes FollowSymlinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  ## Logging
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+  ServerSignature Off
+
+  ## SetEnv/SetEnvIf for environment variables
+  SetEnv APP_ENV dev
+  SetEnv TP_ENV local
+  SetEnv APP_DEBUG true
+</VirtualHost>
