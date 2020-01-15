@@ -70,6 +70,15 @@ RUN curl -LO https://deployer.org/deployer.phar && \
     mv deployer.phar /usr/local/bin/dep && \
     chmod +x /usr/local/bin/dep
 
+# NodeJS
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash - && \
+    apt-get install -y nodejs
+
+# Yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
+    apt update && apt install -y yarn
+
 EXPOSE 22 80
 
 # Clean docker image
