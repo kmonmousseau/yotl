@@ -2,3 +2,6 @@
 body {
     background-color: lightgray;
 }
+.preview {
+    max-height: 70px;
+}
