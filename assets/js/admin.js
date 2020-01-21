@@ -21,4 +21,22 @@ import bootstrap from 'admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js';
 // AdminLTE App
 import adminlte from 'admin-lte/dist/js/adminlte.min.js';
 
-console.log('Hello Webpack Encore! Edit me in assets/js/admin.js');
+(function ($) {
+
+    function readURL(input) {
+        if (!(input.files && input.files[0])) {
+            return;
+        }
+
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            $(input).closest('.input-preview').find('img').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+
+    $('input[type=file]').change(function() {
+        readURL(this);
+    });
+})($);

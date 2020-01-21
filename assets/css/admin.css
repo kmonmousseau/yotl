@@ -2,6 +2,14 @@
 body {
     background-color: lightgray;
 }
-.preview {
+.preview-sm {
     max-height: 70px;
+}
+.preview-lg {
+    max-width: 100%;
+}
+
+.col-form-label {
+    padding-top: 0;
+    font-weight: bold;
 }
