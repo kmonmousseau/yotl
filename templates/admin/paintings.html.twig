@@ -1,7 +1,7 @@
 {% extends 'base-admin.html.twig' %}
 
 {% block page_title %}
-    Tableaux <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Ajouter</a>
+    Tableaux <a href="{{ path('admin_painting_add') }}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Ajouter</a>
 {% endblock %}
 
 {% block content %}
@@ -19,17 +19,20 @@
                     </tr>
                     </thead>
                     <tbody>
+                    {% for painting in paintings %}
                     <tr>
-                        <td>22/04/1998</td>
+                        <td>{{ painting.date|date('d/m/Y') }}</td>
                         <td>
-                            <img src="" alt=""/>
+                            <img src="{{ painting.image }}" alt="{{ painting.name }}"/>
                         </td>
-                        <td>Le nom</td>
-                        <td>120x100</td>
+                        <td>{{ painting.name }}</td>
+                        <td>{{ painting.width }}x{{ painting.height }}</td>
                         <td>
-                            <a href="#" class="btn btn-primary btn-sm" title=""><i class="fas fa-pen"></i> Modifier</a>
+                            <a href="{{ path('admin_painting_update', {'uuid': painting.uuid}) }}" class="btn btn-primary btn-sm" title=""><i class="fas fa-pen"></i> Modifier</a>
+                            <a href="{{ path('admin_painting_delete', {'uuid': painting.uuid}) }}" class="btn btn-primary btn-sm" title=""><i class="fas fa-times"></i> Supprimer</a>
                         </td>
                     </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>

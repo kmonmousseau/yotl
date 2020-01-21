@@ -13,7 +13,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini skin-yellow">
 <div class="wrapper">
 
     <!-- Navbar -->
@@ -38,7 +38,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ path('admin_index') }}" class="brand-link">
-            <span class="brand-text font-weight-light">YOTL</span>
+            <span class="brand-text font-weight-light">Yo Trichet Loiseau</span>
         </a>
 
         <!-- Sidebar -->
@@ -48,7 +48,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
                         <a href="{{ path('admin_paintings') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
+                            <i class="nav-icon far fa-image"></i>
                             <p>Tableaux</p>
                         </a>
                     </li>
@@ -61,7 +61,6 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        {% block body %}{% endblock %}
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
