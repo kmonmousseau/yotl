@@ -23,7 +23,7 @@
                     <tr>
                         <td>{{ painting.date|date('d/m/Y') }}</td>
                         <td>
-                            <img src="{{ painting.image }}" alt="{{ painting.name }}"/>
+                            <img class="preview" src="{{ asset(painting.image) }}" alt="{{ painting.name }}"/>
                         </td>
                         <td>{{ painting.name }}</td>
                         <td>{{ painting.width }}x{{ painting.height }}</td>
