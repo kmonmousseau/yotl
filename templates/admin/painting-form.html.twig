@@ -11,7 +11,11 @@
                 {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
                 <div class="row">
                     <div class="col-lg-4 input-preview">
-                        <img class="preview-lg" src="{{ asset(form.vars.value.knownImage) }}" alt="{{ form.vars.value.name }}"/>
+                        {% if form.vars.value is not null %}
+                            <img class="preview-lg" src="{{ asset(form.vars.value.knownImage) }}" alt="{{ form.vars.value.name }}"/>
+                        {% else %}
+                            <img class="preview-lg" src="" alt=""/>
+                        {% endif %}
                         <div class="form-group">
                             {{ form_widget(form.image) }}
                         </div>
