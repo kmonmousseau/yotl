@@ -4,6 +4,7 @@ namespace App\Handler;
 
 use App\DTO\PaintingDTO;
 use App\Entity\Painting;
+use App\Helper\ImageHelper;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -18,12 +19,21 @@ final class DeletePaintingHandler
     private $entityManager;
 
     /**
-     * AddPaintingHandler constructor.
-     * @param EntityManagerInterface $entityManager
+     * @var ImageHelper
      */
-    public function __construct(EntityManagerInterface $entityManager)
-    {
+    private $imageHelper;
+
+    /**
+     * DeletePaintingHandler constructor.
+     * @param EntityManagerInterface $entityManager
+     * @param ImageHelper $imageHelper
+     */
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        ImageHelper $imageHelper
+    ) {
         $this->entityManager = $entityManager;
+        $this->imageHelper = $imageHelper;
     }
 
     /**
@@ -32,6 +42,11 @@ final class DeletePaintingHandler
      */
     public function handle(Painting $painting): void
     {
+        $oldImage = $painting->getImage();
+        if (!empty($oldImage)) {
+            $this->imageHelper->delete($oldImage);
+        }
+
         $this->entityManager->remove($painting);
         $this->entityManager->flush();
     }

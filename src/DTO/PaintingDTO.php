@@ -4,6 +4,7 @@ namespace App\DTO;
 
 use App\Entity\Painting;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -26,10 +27,15 @@ final class PaintingDTO
     public $date;
 
     /**
-     * @var string|File
-     * @Assert\File()
+     * @var UploadedFile|null
+     * @Assert\File(maxSize="5M", mimeTypes={"image/jpeg", "image/png"})
      */
     public $image;
+
+    /**
+     * @var string
+     */
+    public $knownImage;
 
     /**
      * @var int
@@ -54,7 +60,7 @@ final class PaintingDTO
         $dto = new self();
         $dto->name = $painting->getName();
         $dto->date = $painting->getDate();
-        $dto->image = $painting->getImage();
+        $dto->knownImage = $painting->getImage();
         $dto->width = $painting->getWidth();
         $dto->height = $painting->getHeight();
 

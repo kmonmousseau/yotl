@@ -4,6 +4,7 @@ namespace App\Handler;
 
 use App\DTO\PaintingDTO;
 use App\Entity\Painting;
+use App\Helper\ImageHelper;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -18,12 +19,21 @@ final class UpdatePaintingHandler
     private $entityManager;
 
     /**
-     * AddPaintingHandler constructor.
-     * @param EntityManagerInterface $entityManager
+     * @var ImageHelper
      */
-    public function __construct(EntityManagerInterface $entityManager)
-    {
+    private $imageHelper;
+
+    /**
+     * UpdatePaintingHandler constructor.
+     * @param EntityManagerInterface $entityManager
+     * @param ImageHelper $imageHelper
+     */
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        ImageHelper $imageHelper
+    ) {
         $this->entityManager = $entityManager;
+        $this->imageHelper = $imageHelper;
     }
 
     /**
@@ -37,8 +47,16 @@ final class UpdatePaintingHandler
             ->setName($paintingDTO->name)
             ->setDate($paintingDTO->date)
             ->setWidth($paintingDTO->width)
-            ->setHeight($paintingDTO->height)
-            ->setImage(/*$paintingDTO->image*/'');
+            ->setHeight($paintingDTO->height);
+
+        $oldImage = $painting->getImage();
+        [$name, $directory] = $this->imageHelper->upload(ImageHelper::PAINTING_TYPE, $paintingDTO->image, $paintingDTO->name);
+        if (null !== $name) {
+            $painting->setImage($directory.'/'.$name);
+            if (!empty($oldImage)) {
+                $this->imageHelper->delete($oldImage);
+            }
+        }
 
         $this->entityManager->persist($painting);
         $this->entityManager->flush();
