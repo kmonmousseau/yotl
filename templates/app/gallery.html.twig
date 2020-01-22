@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% for painting in paintings %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="{{ asset(painting.image) | imagine_filter('full_view') }}"
+                       data-lightbox="gallery"
+                       data-title="{{ painting.name~' - '~painting.width~'x'~painting.height~' - '~(painting.date|date('d/m/Y')) }}"
+                       data-alt="{{ painting.name }}">
+                        <img src="{{ asset(painting.image) | imagine_filter('my_thumb') }}"
+                             alt="{{ painting.name }}"
+                             class="gallery-img">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90770802-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-90770802-2');
+    </script>
+
+    <meta charset="UTF-8" />
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>{% block title %}Welcome!{% endblock %} - {{ site.owner }}</title>
+
+    <!-- CSS -->
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Rochester&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('apple-icon-precomposed.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon-32x32.png') }}">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+    <header>
+        <div class="navbar navbar-dark bg-rainbow box-shadow">
+            <a class="navbar-brand d-flex align-items-center" href="{{ path('index') }}">
+                <img src="{{ asset('images/SigneYo.png') }}" class=""/> Yolaine Trichet Loiseau
+            </a>
+        </div>
+    </header>
+    <main role="main">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    </main>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</body>
 </html>

@@ -23,8 +23,8 @@
                         {% for painting in paintings %}
                         <tr>
                             <td>{{ painting.date|date('d/m/Y') }}</td>
-                            <td>
-                                <img class="preview-sm" src="{{ asset(painting.image) }}" alt="{{ painting.name }}"/>
+                            <td style="text-align: center">
+                                <img class="preview-sm" src="{{ asset(painting.image) | imagine_filter('admin_thumb') }}" alt="{{ painting.name }}"/>
                             </td>
                             <td>{{ painting.name }}</td>
                             <td>{{ painting.width }}x{{ painting.height }}</td>

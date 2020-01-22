@@ -1,0 +1,40 @@
+
+
+@import "~bootstrap/scss/bootstrap";
+@import "~lightbox2/dist/css/lightbox.min.css";
+
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+.navbar-brand {
+    //font-family: Rochester, serif;
+    img {
+        max-height: 45px;
+    }
+}
+
+$rainbow-135: linear-gradient(135deg, #D7263D, #F46036, #EAC435);
+
+.bg-rainbow {
+    background: linear-gradient(to right, #D7263D, #F46036, #EAC435);
+}
+
+.gallery-img {
+    margin-top: 20px;
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+    height: auto;
+    /*border: 2px solid;
+    border-radius: 2px;
+    border-image: $rainbow-135 1;
+    display: inline-block;
+    max-width: 100%;*/
+}
+.bg-raindow-135 {
+    background: $rainbow-135;
+}
+
