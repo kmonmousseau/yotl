@@ -10,8 +10,8 @@ set('composer_options', '{{composer_action}} --verbose --prefer-dist --no-progre
 set('repository', 'https://github.com/kmonmousseau/yotl');
 
 add('shared_files', []);
-add('shared_dirs', ['public/uploads']);
-add('writable_dirs', ['public/uploads', 'public/uploads/paintings']);
+add('shared_dirs', ['public/uploads', 'public/media']);
+add('writable_dirs', ['public/uploads', 'public/uploads/paintings', 'public/media']);
 
 // Servers
 host('perso')
