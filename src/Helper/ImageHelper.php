@@ -2,10 +2,9 @@
 
 namespace App\Helper;
 
-use Doctrine\ORM\EntityManagerInterface;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -32,19 +31,27 @@ final class ImageHelper
     private $directories;
 
     /**
+     * @var CacheManager
+     */
+    private $cacheManager;
+
+    /**
      * ImageHelper constructor.
      * @param string $publicDirectory
      * @param string $defaultUploadsDirectory
      * @param string[] $directories
+     * @param CacheManager $cacheManager
      */
     public function __construct(
         string $publicDirectory,
         string $defaultUploadsDirectory,
-        array $directories
+        array $directories,
+        CacheManager $cacheManager
     ) {
         $this->publicDirectory = $publicDirectory;
         $this->defaultUploadsDirectory = $defaultUploadsDirectory;
         $this->directories = $directories;
+        $this->cacheManager = $cacheManager;
     }
 
     /**
@@ -92,5 +99,6 @@ final class ImageHelper
     {
         $filesystem = new Filesystem();
         $filesystem->remove($this->publicDirectory.$path);
+        $this->cacheManager->remove($path);
     }
 }

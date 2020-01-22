@@ -33,3 +33,4 @@ services:
             - '%public_directory%'
             - '%default_uploads_directory%'
             - { 0: '%paintings_directory%' }
+            - '@liip_imagine.cache.manager'
