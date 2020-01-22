@@ -38,7 +38,6 @@ final class DeletePaintingHandler
 
     /**
      * @param Painting $painting
-     * @todo remove image
      */
     public function handle(Painting $painting): void
     {

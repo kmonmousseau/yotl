@@ -39,7 +39,6 @@ final class UpdatePaintingHandler
     /**
      * @param Painting $painting
      * @param PaintingDTO $paintingDTO
-     * @todo add image
      */
     public function handle(Painting $painting, PaintingDTO $paintingDTO): void
     {
