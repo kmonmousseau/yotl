@@ -41,4 +41,8 @@ exec:
 
 ## Deployer
 deployer:
-	$(WEB_CONTAINER) sh -c "php vendor/bin/dep prod"
+	$(WEB_CONTAINER) sh -c "php vendor/bin/dep deploy prod"
+
+## Deployer unlock
+unlock:
+	$(WEB_CONTAINER) sh -c "php vendor/bin/dep deploy:unlock prod"
