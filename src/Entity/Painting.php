@@ -12,7 +12,7 @@ use Ramsey\Uuid\UuidInterface;
  *
  * @ORM\Entity(repositoryClass="App\Repository\PaintingRepository")
  */
-final class Painting
+class Painting
 {
     /**
      * @var int
