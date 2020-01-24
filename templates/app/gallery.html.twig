@@ -7,7 +7,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a href="{{ asset(painting.image) | imagine_filter('full_view') }}"
                        data-lightbox="gallery"
-                       data-title="{{ painting.name~' - '~painting.width~'x'~painting.height~' - '~(painting.date|date('d/m/Y')) }}"
+                       data-title="{{ painting.name~' - '~painting.width~'x'~painting.height~' - '~(painting.date|date('m/Y')) }}"
                        data-alt="{{ painting.name }}">
                         <img src="{{ asset(painting.image) | imagine_filter('my_thumb') }}"
                              alt="{{ painting.name }}"
