@@ -1,13 +1,6 @@
 version: '2'
 
 services:
-    logs:
-        container_name: logs
-        image: busybox
-        volumes:
-            - /var/www/html/app/cache
-            - /var/www/html/app/logs
-            - /var/log/apache2
     mailcatcher:
         container_name: mailcatcher
         image: schickling/mailcatcher
@@ -29,7 +22,8 @@ services:
         build: docker/.
         ports:
             - "8080:80"
-        volumes_from:
-            - logs
         volumes:
             - .:/var/www/html
+            - $SSH_AUTH_SOCK:/ssh-agent # Forward local machine SSH key to docker
+        environment:
+            SSH_AUTH_SOCK: /ssh-agent
